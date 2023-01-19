@@ -1,0 +1,291 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  box-sizing: border-box;
+  max-width: 800px;
+  min-width: 20em;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 3em 5em;
+}
+
+.app__header {
+  text-align: center;
+  margin: 0;
+}
+
+
+
+.input {
+  display: grid;
+  grid-template-rows: 0fr 0fr;
+  grid-template-columns: 1fr 0.5em 0fr;
+}
+
+.input__header {
+  grid-area: 1 / 1 / 2 / 2;
+  font-size: 10pt;
+  display: block;
+  font-variant: small-caps;
+  margin: 0.5em 0;
+}
+
+.input__text {
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 12pt;
+  text-align: center;
+}
+
+.input__now {
+  grid-area: 2 / 3 / 3 / 4;
+  padding: 10px 15px;
+  font-size: 12pt;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+
+
+.output__header {
+  font-size: 10pt;
+  display: block;
+  font-variant: small-caps;
+  margin: 0.5em 0;
+}
+
+.output__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.output__listitem {
+  margin: 5px 0;
+  position: relative;
+}
+
+.output__listitem::before {
+  content: '✅';
+  width: 0;
+  position: absolute;
+  height: 100%;
+  top: 5pt;
+  left: -0.5em;
+  overflow: hidden;
+  transition: width 0.2s ease-in-out, left 0.2s ease-in-out;
+}
+
+.output__listitem--confirm-copy::before {
+  width: 1em;
+  left: -1.5em;
+}
+
+.output__text {
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px 0 0 5px;
+  font-family: Consolas, 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  width: 11em;
+  text-align: center;
+}
+
+.output__copy {
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 0 5px 5px 0;
+  font-family: Consolas, 'Courier New', Courier, monospace;
+  font-size: 10pt;
+  text-align: center;
+  border-left: 0;
+}
+
+.output__label {
+  font-size: 10pt;
+  padding: 5px;
+}
+
+
+
+.footer {
+  text-indent: 0.5em;
+  margin-top: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #36393F;
+    color: #FFFFFF;
+  }
+
+
+
+  .input__text {
+    background-color: #2e3338;
+    color: #a3a6aa;
+    border-color: #202225;
+  }
+
+  .input__text:focus-visible {
+    outline: 1px solid white;
+  }
+
+  .input__now {
+    color: white;
+    border-color: #202225;
+    background-color: #3b3e45;
+  }
+
+  .input__now:hover  {
+    background-color:hsl(220deg 8% 28%);
+  }
+
+  .input__now:active {
+    background-color:hsl(220deg 8% 25%);
+  }
+  
+  .input__now:focus {
+    outline: 1px solid white;
+  }
+  
+
+
+  .output__text {
+    background-color: #2e3338;
+    color: #a3a6aa;
+    border-color: #202225;
+  }
+
+  .output__text:focus-visible {
+    outline: 1px solid white;
+  }
+
+  .output__copy {
+    border-color: #202225;
+    background-color:hsl(220deg 8% 25%);
+  }
+  
+  .output__copy:hover {
+    background-color:hsl(220deg 8% 28%);
+  }
+  
+  .output__copy:active {
+    background-color:hsl(220deg 8% 25%);
+  }
+
+  .output__copy:focus {
+    outline: 1px solid white;
+  }
+
+  .output__label {
+    background-color: hsl(215deg 8% 28%);
+    color: #dddddd;
+  }
+
+
+
+  .footer {
+    color: #dddddd;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background-color: #FAFAFA;
+    color: #000;
+  }
+
+
+
+  .input__text {
+    background-color: hsl(214deg 4% 85%);
+    color: #202225 ;
+    border-color: hsl(216deg 7% 55%);
+  }
+
+  .input__text:focus-visible {
+    outline: 1px solid black;
+  }
+
+  .input__now {
+    color: black;
+    border-color: hsl(216deg 7% 55%);
+    background-color:hsl(220deg 8% 90%);
+  }
+
+  .input__now:hover  {
+    background-color:hsl(220deg 8% 95%);
+  }
+
+  .input__now:active {
+    background-color:hsl(220deg 8% 90%);
+  }
+  
+  .input__now:focus {
+    outline: 1px solid black;
+  }
+  
+  
+
+  .output__text {
+    background-color: hsl(214deg 4% 85%);
+    color: #202225;
+    border-color: hsl(216deg 7% 55%);
+  }
+
+  .output__text:focus-visible {
+    outline: 1px solid black;
+  }
+
+  .output__copy {
+    border-color: hsl(216deg 7% 55%);
+    background-color: hsl(214deg 4% 90%);
+  }
+  
+  .output__copy:hover {
+    background-color:hsl(220deg 8% 95%);
+  }
+  
+  .output__copy:active {
+    background-color: hsl(214deg 4% 90%);
+  }
+
+  .output__copy:focus {
+    outline: 1px solid black;
+  }
+
+  .output__label {
+    background-color: hsl(217deg 8% 87%);
+    color: #202225;
+  }
+
+
+
+  .footer {
+    color: #202225;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .output__listitem::before {
+    transition: none;
+  }
+}
