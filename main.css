@@ -82,8 +82,7 @@ body {
   position: relative;
 }
 
-.output__listitem::before {
-  content: '✅';
+.output__listitem::before, .output__listitem::after {
   width: 0;
   position: absolute;
   height: 100%;
@@ -93,7 +92,15 @@ body {
   transition: width 0.2s ease-in-out, left 0.2s ease-in-out;
 }
 
-.output__listitem--confirm-copy::before {
+.output__listitem::before {
+  content: '✅';
+}
+
+.output__listitem::after {
+  content: '❌';
+}
+
+.output__listitem--confirm-copy::before, .output__listitem--failed-copy::after {
   width: 1em;
   left: -1.5em;
 }
