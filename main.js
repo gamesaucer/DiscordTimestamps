@@ -32,7 +32,7 @@
   /**
    * Gets the text to paste in Discord to display the timestamp.
    */
-  const getTimestampCode = (date, code) => `<t:${Math.floor(Number(date)/1000)}:${code}>`
+  const getTimestampCode = (date, code) => `<t:${Math.floor(Number(date) / 1000)}:${code}>`
 
   /**
    * Formats a relative timestamp.
@@ -76,6 +76,18 @@
   }
 
   /**
+   * Creates a function to temporarily add a class to an element.
+   */
+  const deferAddTempClass = (element, className, delay = 1000) => {
+    let timeout
+    return () => {
+      clearTimeout(timeout)
+      element.classList.add(className)
+      timeout = setTimeout(() => element.classList.remove(className), delay)
+    }
+  }
+
+  /**
    * Creates a single list item.
    */
   const createListItem = id => {
@@ -96,15 +108,10 @@
     outputCopy.title = 'Copy'
     outputCopy.ariaLabel = outputCopy.title
     outputCopy.append('📋')
-    let timeout
-    const confirmState = 'output__listitem--confirm-copy'
     outputCopy.addEventListener('click', () => navigator.clipboard
       .writeText(outputText.value)
-      .then(() => {
-        clearTimeout(timeout)
-        listItem.classList.add(confirmState)
-        timeout = setTimeout(() => listItem.classList.remove(confirmState), 1000)
-      }))
+      .then(deferAddTempClass(listItem, 'output__listitem--confirm-copy'))
+      .catch(deferAddTempClass(listItem, 'output__listitem--failed-copy')))
     listItem.append(outputCopy)
     listItem.append(' ')
 
