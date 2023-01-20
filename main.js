@@ -32,7 +32,7 @@
   /**
    * Gets the text to paste in Discord to display the timestamp.
    */
-  const getTimestampCode = (date, code) => `<t:${Number(date)}:${code}>`
+  const getTimestampCode = (date, code) => `<t:${Math.floor(Number(date)/1000)}:${code}>`
 
   /**
    * Formats a relative timestamp.
