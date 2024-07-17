@@ -137,6 +137,22 @@ body {
   margin-top: auto;
 }
 
+
+
+.icon {
+  height: 2em;
+}
+
+.icon.icon--light {
+  display: none;
+}
+
+.icon.icon--dark {
+  display: block;
+}
+
+
+
 @media (prefers-color-scheme: dark) {
   html {
     background-color: #36393F;
@@ -211,6 +227,16 @@ body {
 
   .footer {
     color: #dddddd;
+  }
+
+
+  
+  .icon.icon--light {
+    display: none;
+  }
+  
+  .icon.icon--dark {
+    display: block;
   }
 }
 
@@ -288,6 +314,16 @@ body {
 
   .footer {
     color: #202225;
+  }
+
+
+
+  .icon.icon--light {
+    display: block;
+  }
+  
+  .icon.icon--dark {
+    display: none;
   }
 }
 
